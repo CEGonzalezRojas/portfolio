@@ -1,0 +1,276 @@
+:root{
+
+    /* Colors */
+    --fire-opal: #ee6352ff;
+    --emerald: #59cd90ff;
+    --cerulean-crayola: #3fa7d6ff;
+    --maximum-yellow-red: #fac05eff;
+    --vivid-tangerine: #f79d84ff;
+
+    --almond: #f1dac4ff;
+    --heliotrope-gray: #a69cacff;
+    --purple-navy: #474973ff;
+    --oxford-blue: #161b33ff;
+    --xiketic: #0d0c1dff;
+
+    /* Shadows */
+    --main-shadow: 4px 4px 10px rgba(0,0,0,.4);
+    --mascot-body-shadow: 0px 0px 20px #fac05eff;
+    
+
+}
+
+html,body{
+    margin: 0;
+}
+
+html{
+    background-color: var(--oxford-blue);
+    background-image:  repeating-linear-gradient(45deg, var(--oxford-blue) 25%, transparent 25%, transparent 75%, var(--oxford-blue) 75%, var(--oxford-blue)),
+    repeating-linear-gradient(45deg, var(--oxford-blue) 25%, var(--xiketic) 25%, var(--xiketic) 75%, var(--oxford-blue) 75%, var(--oxford-blue));
+    background-position: 0 0, 20px 20px;
+    background-size: 40px 40px;
+}
+
+body{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+/* Mascot */
+.mascot > .body{
+    display: grid;
+    grid-template-rows: max-content max-content;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: 10px;
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+    box-shadow: var(--mascot-body-shadow);
+    background-color: var(--maximum-yellow-red);
+    cursor: pointer;
+}
+
+.mascot > .body > .eyes{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    height: 30px;
+    width: 80px;
+}
+
+.mascot > .body > .eyes > div{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: calc( 100% - 4px );
+    border-radius: 100%;
+    background-color: var(--almond);
+    border-bottom: 4px solid rgba(0,0,0,.8);
+}
+
+.mascot > .body > .eyes > div > div{
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+    background-color: var(--xiketic);
+}
+
+.mascot > .body > .eyes > div > div::before{
+    content: '';
+    display: block;
+    position: absolute;
+    height: 4px;
+    width: 4px;
+    border-radius: 4px;
+    background-color: var(--almond);
+}
+
+.mascot > .body > .eyes > div::before{
+    content: '';
+    display: block;
+    position: absolute;
+    top: -12px;
+    height: 10px;
+    width: 100%;
+    border-radius: 4px;
+    background-color: var(--xiketic);
+    z-index: 1;
+}
+
+.mascot > .body > .eyes > div::after{
+    content: '';
+    display: block;
+    position: absolute;
+    border-radius: 100%;
+    top: 0;
+    height: 0%;
+    width: 100%;
+    background-color: var(--maximum-yellow-red);
+    transition: height 0.2s ease-in-out;
+}
+
+.mascot[data-status=sleep] > .body > .eyes > div::after{
+    height: 100%;
+}
+
+.mascot > .body > .mounth{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: var(--fire-opal);
+    height: 24px;
+    border-radius: 24px;
+    border: 2px solid rgba(0,0,0,.25);
+}
+
+.mascot > .body > .mounth::before{
+    content: '';
+    display: block;
+    height: 4px;
+    width: 50px;
+    border-radius: 4px;
+    background-color: var(--xiketic);
+}
+
+/***** Mascot animation by status *****/
+
+/* Sleep */
+.mascot[data-status=sleep], .mascot[data-status=awake]{
+    animation: mascot-sleep infinite 4s ease-in-out;
+}
+
+.mascot[data-status=sleep] > .body > .mounth{
+    animation: mascot-mouth-sleep 4s infinite ease-in-out;
+}
+
+/* Shake */
+.mascot[data-status=shake]{
+    animation: mascot-shake 2 .25s ease-in-out;
+}
+
+/* Awake */
+.mascot[data-status=awake] > .body > .eyes > div::after{
+    animation: mascot-eyes-blink infinite 5s 1s ease-in-out;
+}
+
+.mascot[data-status=awake] > .body > .mounth[data-status=talk]{
+    animation: mascot-mouth-talk infinite 1s ease-in-out;
+}
+
+/***** Mascot animation by status *****/
+
+/* Animations */
+@keyframes mascot-sleep {
+    0%{
+        transform: translateY(0px);
+    }
+    60%{
+        transform: translateY(-10px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+
+@keyframes mascot-mouth-sleep {
+    0%{
+        transform: scaleX(100%) scaleY(100%);
+    }
+    60%{
+        transform: scaleX(90%) scaleY(110%);
+    }
+    100%{
+        transform: scaleX(100%) scaleY(100%);
+    }
+}
+
+@keyframes mascot-shake {
+    0%{
+        transform: translate(0px,-5px);
+    }
+    10%{
+        transform: translate(5px,-2px);
+    }
+    20%{
+        transform: translate(-5px,-5px);
+    }
+    30%{
+        transform: translate(10px,0px);
+    }
+    40%{
+        transform: translate(2px,4px);
+    }
+    50%{
+        transform: translate(-4px,8px);
+    }
+    60%{
+        transform: translate(5px,0px);
+    }
+    70%{
+        transform: translate(-5px,-10px);
+    }
+    80%{
+        transform: translate(10px,-5px);
+    }
+    90%{
+        transform: translate(-4px,4px);
+    }
+    100%{
+        transform: translate(0px,0px);
+    }
+}
+
+@keyframes mascot-eyes-blink{
+    0%{
+        height: 0%;
+    }
+    3%{
+        height: 100%;
+    }
+    5%{
+        height: 0%;
+    }
+    50%{
+        height: 0%;
+    }
+    53%{
+        height: 100%;
+    }
+    55%{
+        height: 0%;
+    }
+    57%{
+        height: 100%;
+    }
+    60%{
+        height: 0%;
+    }
+}
+
+@keyframes mascot-mouth-talk {
+    0%{
+        transform: scaleX(100%) scaleY(100%);
+    }
+    40%{
+        transform: scaleX(90%) scaleY(110%);
+    }
+    60%{
+        transform: scaleX(110%) scaleY(90%);
+    }
+    80%{
+        transform: scaleX(80%) scaleY(120%);
+    }
+    90%{
+        transform: scaleX(100%) scaleY(100%);
+    }
+    100%{
+        transform: scaleX(100%) scaleY(100%);
+    }
+}
