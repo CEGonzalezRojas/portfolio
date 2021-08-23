@@ -22,7 +22,8 @@
         emotions = {
             NORMAL: "normal",
             ANGRY: "angry",
-            SURPRISED: "surprised"
+            SURPRISED: "surprised",
+            WORKING: "working"
         }
 
         statusesValues = Object.values(this.statuses);
@@ -95,9 +96,12 @@
 
                 case this.statuses.AWAKE:
                     this.Talk([
-                        { string: "¡¿QUÉ PASO?!", emotion: this.emotions.ANGRY },
-                        { string: "Ah! Estaba descansando los ojos.", emotion: this.emotions.SURPRISED },
-                        { string: "Don Claudio me dejo a cargo de saludar a los visitantes.", emotion: this.emotions.NORMAL },
+                        { string: Localization.GetTranslate( "grettings", "one" ), emotion: this.emotions.ANGRY },
+                        { string: Localization.GetTranslate( "grettings", "two" ), emotion: this.emotions.SURPRISED },
+                        { string: Localization.GetTranslate( "grettings", "three" )},
+                        { string: Localization.GetTranslate( "grettings", "four" )},
+                        { string: Localization.GetTranslate( "grettings", "five" ), emotion: this.emotions.WORKING },
+                        { string: Localization.GetTranslate( "grettings", "six" ), emotion: this.emotions.SURPRISED },
                     ]);
                     break;
             }

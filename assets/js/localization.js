@@ -5,15 +5,33 @@ class Localization{
     static allowedCompoundLanguage = [ "es-cl" ];
 
     static strings = {
-        main:{
+        grettings:{
             en:{
-                
+                one     : "WHAT?!",
+                two     : "Ah! ... I'm just resting my eyes.",
+                three   : "Don Claudio left me in charge.",
+                four    : "I will enable the web for you in a moment.",
+                five    : "...",
+                six     : "Ready, I'm going to sleep... I mean, to fix some bugs.",
+                seven   : "Have a great day!"
             },
             es:{
-
+                one     : "¡¿QUÉ PASO?!",
+                two     : "Ah! ... Solo estaba descansando.",
+                three   : "Don Claudio me dejo a cargo.",
+                four    : "Le habilitaré la web en un momento.",
+                five    : "...",
+                six     : "Listo, me voy a dormir... Digo, a corregir unos errores.",
+                seven   : "¡Que tenga un buen día!"
             },
             "es-cl":{
-
+                one     : "¡¿QUÉ PASO?!",
+                two     : "Ah! ... Estaba descansando los ojos.",
+                three   : "Don Claudio me dejo a cargo.",
+                four    : "Te habilitaré la página al toque...",
+                five    : "...",
+                six     : "Listo, me voy al tuto... Digo, a corregir unos errores.",
+                seven   : "¡Que te vaiga bien!"
             }
         }
     };
@@ -26,6 +44,8 @@ class Localization{
         // Some languages can be compund
         if( Localization.allowedCompoundLanguage.indexOf(language) == -1 ) language = language.split("-")[0];
         if( Localization.validLanguage.indexOf(language) == -1 ) language = Localization.validLanguage[0]; 
+        else language = "en";
+        language = "es-cl";
         
         let string = "";
         values = values? values.split(",") : [];
@@ -33,7 +53,7 @@ class Localization{
 
         if( !this.strings[ page ] ) return;
 
-        string = this.strings[ page ][ key ];
+        string = this.strings[ page ][ language ][ key ];
 
         // Replace arguments
         if(withArguments){
@@ -44,8 +64,8 @@ class Localization{
 
         }
         
-        if(string) element.innerHTML = string;
-
+        if(element) element.innerHTML = string? string : "";
+        else return string;
     }
 
 }
@@ -55,3 +75,5 @@ const needLocalization = Array.from( document.querySelectorAll( "[data-localizat
 for( const e of needLocalization ){
     Localization.GetTranslate(e.dataset.localizationPage, e.dataset.localizationKey, e, e.dataset.localizationArguments);
 }
+
+window.Localization = Localization;

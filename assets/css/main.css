@@ -145,6 +145,26 @@ body{
     background-color: var(--xiketic);
 }
 
+.mascot > .body > .blush{
+    position: absolute;
+    top: calc( 50% - 8px );
+    left: calc( 50% - 56px );
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 80px;
+}
+
+.mascot > .body > .blush::before, .mascot > .body > .blush::after{
+    content: '';
+    display: block;
+    height: 16px;
+    width: 16px;
+    border-radius: 16px;
+    background-color: var(--fire-opal);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
 /* Emotions */
 .mascot[data-mod=angry] > .body > .eyes > div::before{
     transform: translateY(12px);
@@ -153,6 +173,15 @@ body{
 .mascot[data-mod=surprised] > .body > .eyes > div::before{
     transform: translateY(-12px);
 }
+
+.mascot[data-mod=surprised] > .body > .blush::before, .mascot[data-mod=surprised] > .body > .blush::after{
+    opacity: 1;
+}
+
+.mascot[data-mod=working] > .body > .eyes > div:first-child:before{
+    transform: translateY(-12px);
+}
+
 
 /* Dialogs */
 .mascot-dialog-container{
