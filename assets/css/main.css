@@ -13,15 +13,20 @@
     --oxford-blue: #161b33ff;
     --xiketic: #0d0c1dff;
 
+    --alabaster: #e8eddf;
+
     /* Shadows */
     --main-shadow: 4px 4px 10px rgba(0,0,0,.4);
-    --mascot-body-shadow: 0px 0px 20px #fac05eff;
+    --mascot-body-shadow: 0px 0px 20px var(--maximum-yellow-red);
+    --mascot-dialog-shadow: 0px 0px 20px var(--alabaster);
     
 
 }
 
 html,body{
     margin: 0;
+    font-family: 'Fredoka One';
+    color: var(--xiketic);
 }
 
 html{
@@ -34,8 +39,8 @@ html{
 
 body{
     display: grid;
-    justify-content: center;
     align-content: center;
+    justify-items: center;
 }
 
 /* Mascot */
@@ -101,6 +106,7 @@ body{
     border-radius: 4px;
     background-color: var(--xiketic);
     z-index: 1;
+    transition: transform 0.2s ease-in-out;
 }
 
 .mascot > .body > .eyes > div::after{
@@ -139,6 +145,42 @@ body{
     background-color: var(--xiketic);
 }
 
+/* Emotions */
+.mascot[data-mod=angry] > .body > .eyes > div::before{
+    transform: translateY(12px);
+}
+
+.mascot[data-mod=surprised] > .body > .eyes > div::before{
+    transform: translateY(-12px);
+}
+
+/* Dialogs */
+.mascot-dialog-container{
+    display: flex;
+    justify-items: center;
+    flex-direction: column-reverse;
+    height: 0px;
+}
+
+.mascot-dialog{
+    position: relative;
+    background-color: var(--alabaster);
+    box-shadow: var(--mascot-dialog-shadow);
+    width: fit-content;
+    border-radius: 10px;
+    margin: auto;
+    padding: 8px;
+    border-bottom: 4px solid rgba(0,0,0,0.1);
+    border-left: 2px solid rgba(0,0,0,.1);
+    border-right: 2px solid rgba(0,0,0,.1);
+    text-align: center;
+    animation: mascot-dialog-appears 1 0.2s ease-in-out forwards;
+}
+
+.mascot-dialog.gone{
+    animation: mascot-dialog-disappears 1 0.2s ease-in-out forwards;
+}
+
 /***** Mascot animation by status *****/
 
 /* Sleep */
@@ -161,7 +203,7 @@ body{
 }
 
 .mascot[data-status=awake] > .body > .mounth[data-status=talk]{
-    animation: mascot-mouth-talk infinite 1s ease-in-out;
+    animation: mascot-mouth-talk infinite .8s ease-in-out;
 }
 
 /***** Mascot animation by status *****/
@@ -169,13 +211,13 @@ body{
 /* Animations */
 @keyframes mascot-sleep {
     0%{
-        transform: translateY(0px);
+        transform: translateY(0px) scale(1,1);
     }
     60%{
-        transform: translateY(-10px);
+        transform: translateY(-10px) scale(1.025,1.025);
     }
     100%{
-        transform: translateY(0px);
+        transform: translateY(0px) scale(1,1);
     }
 }
 
@@ -267,10 +309,37 @@ body{
     80%{
         transform: scaleX(80%) scaleY(120%);
     }
-    90%{
-        transform: scaleX(100%) scaleY(100%);
-    }
     100%{
         transform: scaleX(100%) scaleY(100%);
+    }
+}
+
+@keyframes mascot-dialog-appears {
+    from{
+        margin-top: 0px;
+        opacity: 0;
+        padding: 0px;
+        border-bottom: 0px;
+        max-height: 0px;
+        transform: translateY(10px);
+    }
+    to{
+        margin-top: 8px;
+        opacity: 1;
+        padding: 8px;
+        border-bottom: 4px;
+        max-height: 100px;
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes mascot-dialog-disappears {
+    from{
+        opacity: 1;
+        transform: translateY(-20px);
+    }
+    to{
+        opacity: 0;
+        transform: translateY(-40px);
     }
 }
