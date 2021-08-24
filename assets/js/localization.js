@@ -9,11 +9,12 @@ class Localization{
             en:{
                 one     : "WHAT?!",
                 two     : "Ah! ... I'm just resting my eyes.",
-                three   : "Don Claudio left me in charge.",
+                three   : "Don Claudio put me in charge.",
                 four    : "I will enable the web for you in a moment.",
                 five    : "...",
-                six     : "Ready, I'm going to sleep... I mean, to fix some bugs.",
-                seven   : "Have a great day!"
+                six     : "Ready, I'm going to sleep.",
+                seven   : "I mean... to fix some bugs.",
+                eight   : "Have a great day!"
             },
             es:{
                 one     : "¡¿QUÉ PASO?!",
@@ -21,8 +22,9 @@ class Localization{
                 three   : "Don Claudio me dejo a cargo.",
                 four    : "Le habilitaré la web en un momento.",
                 five    : "...",
-                six     : "Listo, me voy a dormir... Digo, a corregir unos errores.",
-                seven   : "¡Que tenga un buen día!"
+                six     : "Listo, me voy a dormir.",
+                seven   : "Digo... a corregir unos errores.",
+                eight   : "¡Que tenga un buen día!"
             },
             "es-cl":{
                 one     : "¡¿QUÉ PASO?!",
@@ -30,8 +32,43 @@ class Localization{
                 three   : "Don Claudio me dejo a cargo.",
                 four    : "Te habilitaré la página al toque...",
                 five    : "...",
-                six     : "Listo, me voy al tuto... Digo, a corregir unos errores.",
-                seven   : "¡Que te vaiga bien!"
+                six     : "Listo, me voy al tuto.",
+                seven   : "Digo... a corregir unos errores.",
+                eight   : "¡Que te vaiga bien!"
+            }
+        },
+        dontDisturb:{
+            en:{
+                0: "zzzzz...",
+                1: "... please... come on...",
+                2: "I'm sleeping..."
+            },
+            esn:{
+                0: "zzzzz...",
+                1: "... por favor... detente...",
+                2: "Estoy durmiendo..."
+            },
+            "es-cl":{
+                0: "zzzzz...",
+                1: "... ya pueh' ...",
+                2: "Estoy raja..."
+            }
+        },
+        byebye:{
+            en:{
+                one     : "ENOUGH!!",
+                two     : "I have to go...",
+                three   : "See you!"
+            },
+            esn:{
+                one     : "¡¿BASTA?!",
+                two     : "Me tengo que ir...",
+                three   : "¡Adiós!"
+            },
+            "es-cl":{
+                one     : "¡¿QUÉ WEA?!",
+                two     : "Me aburrí...",
+                three   : "¡Chaucha!"
             }
         }
     };
@@ -45,7 +82,6 @@ class Localization{
         if( Localization.allowedCompoundLanguage.indexOf(language) == -1 ) language = language.split("-")[0];
         if( Localization.validLanguage.indexOf(language) == -1 ) language = Localization.validLanguage[0]; 
         else language = "en";
-        language = "es-cl";
         
         let string = "";
         values = values? values.split(",") : [];

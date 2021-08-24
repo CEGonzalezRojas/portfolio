@@ -10,28 +10,34 @@
 
         // Status & Emotions
         statuses = {
-            SLEEP: "sleep",
-            SHAKE: "shake",
-            AWAKE: "awake"
+            SLEEP   : "sleep",
+            SHAKE   : "shake",
+            AWAKE   : "awake",
+            BYEBYE  : "byebye",
+            GONE    : "gone",
         };
         
         mounthStatuses = {
-            TALK: "talk",
+            TALK    : "talk",
         };
 
         emotions = {
-            NORMAL: "normal",
-            ANGRY: "angry",
-            SURPRISED: "surprised",
-            WORKING: "working"
+            NORMAL      : "normal",
+            ANGRY       : "angry",
+            SURPRISED   : "surprised",
+            WORKING     : "working"
         }
 
         statusesValues = Object.values(this.statuses);
         currentStatus = this.statuses.SLEEP;
 
+        // Sleep variables
+        sleepCycle = 0;
+        sleepCycleLimit = 4;
+
         // Dialog variables
         dialogTimePerLetter = 50;
-        dialogTimePerDialog = 2000;
+        dialogTimePerDialog = 1250;
         isTalking = false;
 
         constructor(){
@@ -41,7 +47,7 @@
             this.mascotMounth = this.mascot.querySelector(".mounth");
 
             // Find the dialog container
-            this.dialogsContainer = document.querySelector(".mascot-dialog-container");
+            this.dialogsContainer = this.mascot.querySelector(".mascot-dialog-container");
 
             this.Events();
 
@@ -62,10 +68,17 @@
 
         // What happend when you click depends on the status
         OnClick(event){
+
+            if(this.isTalking) return;
             
             switch(this.currentStatus){
                 case this.statuses.SLEEP:
-                    this.UpdateCurrentStatus(this.statuses.SHAKE);
+                    if(this.sleepCycle == 0) this.UpdateCurrentStatus(this.statuses.SHAKE);
+                    else if(this.sleepCycle == this.sleepCycleLimit) this.UpdateCurrentStatus(this.statuses.BYEBYE);
+                    else{
+                        this.Talk([{ string: Localization.GetTranslate( "dontDisturb", Math.floor( Math.random() * 3 ) ), emotion: this.emotions.ANGRY }]);
+                        this.sleepCycle++;
+                    }
                     break;
             }
 
@@ -95,14 +108,41 @@
                     break;
 
                 case this.statuses.AWAKE:
+
+                    if(this.sleepCycle == 0){
+                        this.Talk([
+                            { string: Localization.GetTranslate( "grettings", "one" ), emotion: this.emotions.ANGRY },
+                            { string: Localization.GetTranslate( "grettings", "two" ), emotion: this.emotions.SURPRISED },
+                            { string: Localization.GetTranslate( "grettings", "three" )},
+                            { string: Localization.GetTranslate( "grettings", "four" )},
+                            { string: Localization.GetTranslate( "grettings", "five" ), emotion: this.emotions.WORKING },
+                            { string: Localization.GetTranslate( "grettings", "six" )},
+                            { string: Localization.GetTranslate( "grettings", "seven" ), emotion: this.emotions.SURPRISED },
+                            { string: Localization.GetTranslate( "grettings", "eight" )},
+                        ], this.statuses.SLEEP);
+                    }
+                    this.sleepCycle++;
+                    
+                    break;
+
+                case this.statuses.BYEBYE:
+
                     this.Talk([
-                        { string: Localization.GetTranslate( "grettings", "one" ), emotion: this.emotions.ANGRY },
-                        { string: Localization.GetTranslate( "grettings", "two" ), emotion: this.emotions.SURPRISED },
-                        { string: Localization.GetTranslate( "grettings", "three" )},
-                        { string: Localization.GetTranslate( "grettings", "four" )},
-                        { string: Localization.GetTranslate( "grettings", "five" ), emotion: this.emotions.WORKING },
-                        { string: Localization.GetTranslate( "grettings", "six" ), emotion: this.emotions.SURPRISED },
-                    ]);
+                        { string: Localization.GetTranslate( "byebye", "one" ), emotion: this.emotions.ANGRY },
+                        { string: Localization.GetTranslate( "byebye", "two" ), emotion: this.emotions.ANGRY },
+                        { string: Localization.GetTranslate( "byebye", "three" ), emotion: this.emotions.ANGRY }
+                    ], this.statuses.GONE);
+
+                    break;
+
+                case this.statuses.GONE:
+
+                    const afterGone = e => {
+                        this.mascot.removeEventListener("animationend", afterGone);
+                        this.mascot.remove();
+                    };
+                    this.mascot.addEventListener("animationend", afterGone);
+
                     break;
             }
 
@@ -112,7 +152,7 @@
 
         // Display one or more strings as a dialog
         // dialogs := JSONArray with 2 properties (string, emotion)
-        async Talk( dialogs ){
+        async Talk( dialogs, postStatus ){
 
             if( this.isTalking || !this.dialogsContainer || !dialogs || !Array.isArray(dialogs) && dialogs.length == 0 ) return;
             this.isTalking = true;
@@ -149,8 +189,9 @@
                             delete this.mascotMounth.dataset.status;
 
                             setTimeout( _ => {
-                                dialogContainer.addEventListener( "animationend", _ => { dialogContainer.remove(); });
-                                dialogContainer.classList.add("gone");
+                                const preDialogContainer = dialogContainer;
+                                preDialogContainer.addEventListener( "animationend", _ => { preDialogContainer.remove(); });
+                                preDialogContainer.classList.add("gone");
                             }, this.dialogTimePerDialog * 0.8 );
 
                         };
@@ -174,6 +215,8 @@
             // Reset
             delete this.mascot.dataset.mod;
             this.isTalking = false;
+
+            if(postStatus) this.UpdateCurrentStatus(postStatus);
         }
 
     }

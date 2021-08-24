@@ -44,6 +44,12 @@ body{
 }
 
 /* Mascot */
+
+.mascot{
+    display: grid;
+    justify-items: center;
+}
+
 .mascot > .body{
     display: grid;
     grid-template-rows: max-content max-content;
@@ -57,6 +63,7 @@ body{
     box-shadow: var(--mascot-body-shadow);
     background-color: var(--maximum-yellow-red);
     cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
 }
 
 .mascot > .body > .eyes{
@@ -212,11 +219,17 @@ body{
 
 /***** Mascot animation by status *****/
 
-/* Sleep */
-.mascot[data-status=sleep], .mascot[data-status=awake]{
+/* General */
+
+.mascot > .body > .mounth[data-status=talk]{
+    animation: mascot-mouth-talk infinite .8s ease-in-out;
+}
+
+.mascot[data-status=sleep], .mascot[data-status=awake], .mascot[data-status=byebye], .mascot[data-status=gone]{
     animation: mascot-sleep infinite 4s ease-in-out;
 }
 
+/* Sleep */
 .mascot[data-status=sleep] > .body > .mounth{
     animation: mascot-mouth-sleep 4s infinite ease-in-out;
 }
@@ -231,8 +244,9 @@ body{
     animation: mascot-eyes-blink infinite 5s 1s ease-in-out;
 }
 
-.mascot[data-status=awake] > .body > .mounth[data-status=talk]{
-    animation: mascot-mouth-talk infinite .8s ease-in-out;
+/* Bye Bye */
+.mascot[data-status=gone] > .body{
+    animation: mascot-gone 1 .6s ease-in-out forwards;
 }
 
 /***** Mascot animation by status *****/
@@ -370,5 +384,17 @@ body{
     to{
         opacity: 0;
         transform: translateY(-40px);
+    }
+}
+
+/* Animations */
+@keyframes mascot-gone {
+    0%{
+        opacity: 1;
+        transform: scale(1,1);
+    }
+    100%{
+        opacity: 0;
+        transform: scale(0,0);
     }
 }
