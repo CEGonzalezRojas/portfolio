@@ -192,10 +192,12 @@ body{
 
 /* Dialogs */
 .mascot-dialog-container{
+    position: absolute;
     display: flex;
     justify-items: center;
     flex-direction: column-reverse;
     height: 0px;
+    width: max-content;
 }
 
 .mascot-dialog{
@@ -246,7 +248,7 @@ body{
 
 /* Bye Bye */
 .mascot[data-status=gone] > .body{
-    animation: mascot-gone 1 .6s ease-in-out forwards;
+    animation: mascot-gone 1 .8s ease-in-out forwards;
 }
 
 /***** Mascot animation by status *****/
@@ -392,6 +394,10 @@ body{
     0%{
         opacity: 1;
         transform: scale(1,1);
+    }
+    60%{
+        opacity: 1;
+        transform: scale(1.1,1.1);
     }
     100%{
         opacity: 0;
