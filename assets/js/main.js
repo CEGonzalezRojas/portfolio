@@ -6,6 +6,8 @@
         // HTMLElement with the structure
         mascot;
         mascotMounth;
+        mascotLayer;
+        mainLayer;
         dialogsContainer;
 
         // Status & Emotions
@@ -43,6 +45,8 @@
         constructor(){
 
             // Find the mascot structure
+            this.mascotLayer = document.querySelector("[data-layer=mascot]");
+            this.mainLayer = document.querySelector("[data-layer=main]");
             this.mascot = document.querySelector(".mascot");
             this.mascotMounth = this.mascot.querySelector(".mounth");
 
@@ -115,7 +119,7 @@
                             { string: Localization.GetTranslate( "grettings", "two" ), emotion: this.emotions.SURPRISED },
                             { string: Localization.GetTranslate( "grettings", "three" )},
                             { string: Localization.GetTranslate( "grettings", "four" )},
-                            { string: Localization.GetTranslate( "grettings", "five" ), emotion: this.emotions.WORKING },
+                            { string: Localization.GetTranslate( "grettings", "five" ), emotion: this.emotions.WORKING, postFunction: _ => { this.WebReady(); }},
                             { string: Localization.GetTranslate( "grettings", "six" )},
                             { string: Localization.GetTranslate( "grettings", "seven" ), emotion: this.emotions.SURPRISED },
                             { string: Localization.GetTranslate( "grettings", "eight" )},
@@ -151,7 +155,7 @@
         }
 
         // Display one or more strings as a dialog
-        // dialogs := JSONArray with 2 properties (string, emotion)
+        // dialogs := JSONArray with 3 properties (string, emotion, postFunction)
         async Talk( dialogs, postStatus ){
 
             if( this.isTalking || !this.dialogsContainer || !dialogs || !Array.isArray(dialogs) && dialogs.length == 0 ) return;
@@ -190,7 +194,10 @@
 
                             setTimeout( _ => {
                                 const preDialogContainer = dialogContainer;
-                                preDialogContainer.addEventListener( "animationend", _ => { preDialogContainer.remove(); });
+                                preDialogContainer.addEventListener( "animationend", _ => {
+                                    preDialogContainer.remove();
+                                    if(typeof dialogs[ stringIndex - 1 ].postFunction == "function") dialogs[ stringIndex - 1 ].postFunction();
+                                });
                                 preDialogContainer.classList.add("gone");
                             }, this.dialogTimePerDialog * 0.8 );
 
@@ -217,6 +224,14 @@
             this.isTalking = false;
 
             if(postStatus) this.UpdateCurrentStatus(postStatus);
+        }
+
+        // Enable webpage navigation
+        WebReady(){
+
+            this.mascotLayer.classList.add( "ready" );
+            this.mainLayer.classList.add( "ready" );
+
         }
 
     }

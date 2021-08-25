@@ -1,0 +1,52 @@
+.portfolio{
+    display: grid;
+    gap: 20px;
+}
+
+.portfolio > .projects{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.portfolio > .projects > .project{
+    display: grid;
+    gap: 10px;
+    align-content: baseline;
+}
+
+.portfolio > .projects > .project > .image{
+    position: relative;
+    height: 150px;
+    background-color: rgba(0,0,0,.4);
+    border-radius: 10px;
+}
+
+.portfolio > .projects > .project > .image::before{
+    content: attr(data-type);
+    position: absolute;
+    top: 5px;
+    right: -5px;
+    padding: 2px 10px;
+    background-color: var(--cerulean-crayola);
+    text-shadow: var(--type-text-shadow);
+    box-shadow: var(--type-shadow);
+    text-transform: capitalize;
+    font-size: 0.8em;
+    border-radius: 10px 0px 10px 10px;
+}
+
+.portfolio > .projects > .project > .title{
+    width: max-content;
+    padding: 2px 12px;
+    background-color: var(--cerulean-crayola);
+    text-shadow: var(--type-text-shadow);
+    box-shadow: var(--type-shadow);
+    text-transform: capitalize;
+    font-size: 1.2em;
+    border-radius: 10px;
+}
+
+.portfolio > .projects > .project > .description{
+    text-shadow: var(--p-shadow-black);
+}
