@@ -1,4 +1,4 @@
-const mainPath = "/";
+const mainPath = "/portfolio/";
 
 import { MascotController } from `${mainPath}assets/js/mascot.js`;
 import { LazyLoad } from `${mainPath}assets/js/lazyLoad.js`;
