@@ -24,6 +24,7 @@
     background-size: cover;
     box-shadow: var(--iframe-shadow);
     cursor: pointer;
+    overflow: hidden;
 }
 
 .portfolio > .projects > .project > .image::before{
@@ -38,6 +39,19 @@
     text-transform: capitalize;
     font-size: 0.8em;
     border-radius: 10px 0px 0px 10px;
+    z-index: 2;
+}
+
+.portfolio > .projects > .project > .image[data-lazy-load]::after{
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    z-index: 1;
+    background-color: var(--purple-navy);
+    animation: lazy-load 1s ease-in-out infinite;
 }
 
 .portfolio > .projects > .project > .title{
@@ -75,6 +89,23 @@
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
+    }
+
+}
+
+/* Animations */
+@keyframes lazy-load{
+    0%{
+        opacity: 0;
+    }
+    20%{
+        opacity: .4;
+    }
+    80%{
+        opacity: .4;
+    }
+    100%{
+        opacity: 0;
     }
 
 }
