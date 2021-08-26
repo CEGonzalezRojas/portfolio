@@ -10,6 +10,7 @@ export class MascotController{
     // Functions
     siteConstructorFunction;
     postGoneFunction;
+    siteConstructorCalled = false;
 
     // Status & Emotions
     statuses = {
@@ -89,7 +90,7 @@ export class MascotController{
                 if(this.sleepCycle == 0) this.UpdateCurrentStatus(this.statuses.SHAKE);
                 else if(this.sleepCycle == this.sleepCycleLimit) this.UpdateCurrentStatus(this.statuses.BYEBYE);
                 else{
-                    this.Talk([{ string: Localization.GetTranslate( "dontDisturb", Math.floor( Math.random() * 3 ) ), emotion: this.emotions.ANGRY }]);
+                    this.Talk([{ string: window.Localization.GetTranslate( "dontDisturb", Math.floor( Math.random() * 3 ) ), emotion: this.emotions.ANGRY }]);
                     this.sleepCycle++;
                 }
                 break;
@@ -124,13 +125,13 @@ export class MascotController{
 
                 if(this.sleepCycle == 0){
                     this.Talk([
-                        { string: Localization.GetTranslate( "grettings", "one" ), emotion: this.emotions.ANGRY },
-                        { string: Localization.GetTranslate( "grettings", "two" ), emotion: this.emotions.SURPRISED },
-                        { string: Localization.GetTranslate( "grettings", "three" )},
-                        { string: Localization.GetTranslate( "grettings", "four" ), emotion: this.emotions.WORKING, postFunction: _ => { this.WebReady(); }},
-                        { string: Localization.GetTranslate( "grettings", "five" )},
-                        { string: Localization.GetTranslate( "grettings", "six" ), emotion: this.emotions.SURPRISED },
-                        { string: Localization.GetTranslate( "grettings", "seven" )},
+                        { string: window.Localization.GetTranslate( "grettings", "one" ), emotion: this.emotions.ANGRY },
+                        { string: window.Localization.GetTranslate( "grettings", "two" ), emotion: this.emotions.SURPRISED },
+                        { string: window.Localization.GetTranslate( "grettings", "three" )},
+                        { string: window.Localization.GetTranslate( "grettings", "four" ), emotion: this.emotions.WORKING, postFunction: _ => { this.WebReady(); }},
+                        { string: window.Localization.GetTranslate( "grettings", "five" )},
+                        { string: window.Localization.GetTranslate( "grettings", "six" ), emotion: this.emotions.SURPRISED },
+                        { string: window.Localization.GetTranslate( "grettings", "seven" )},
                     ], this.statuses.SLEEP);
                 }
                 this.sleepCycle++;
@@ -140,9 +141,9 @@ export class MascotController{
             case this.statuses.BYEBYE:
 
                 this.Talk([
-                    { string: Localization.GetTranslate( "byebye", "one" ), emotion: this.emotions.ANGRY },
-                    { string: Localization.GetTranslate( "byebye", "two" ), emotion: this.emotions.ANGRY },
-                    { string: Localization.GetTranslate( "byebye", "three" ), emotion: this.emotions.ANGRY }
+                    { string: window.Localization.GetTranslate( "byebye", "one" ), emotion: this.emotions.ANGRY },
+                    { string: window.Localization.GetTranslate( "byebye", "two" ), emotion: this.emotions.ANGRY },
+                    { string: window.Localization.GetTranslate( "byebye", "three" ), emotion: this.emotions.ANGRY }
                 ], this.statuses.GONE);
 
                 break;
@@ -187,6 +188,7 @@ export class MascotController{
                     
                     if( stringIndex != lastStringIndex ){
                         dialogContainer = domParser.parseFromString( "<div class='mascot-dialog'></div>", "text/html" ).body.firstChild;
+                        dialogContainer.dataset.index = stringIndex;
                         this.dialogsContainer.append(dialogContainer);
                         lastStringIndex = stringIndex;
                         this.mascotMounth.dataset.status = this.mounthStatuses.TALK;
@@ -215,7 +217,7 @@ export class MascotController{
                             const preDialogContainer = dialogContainer;
                             preDialogContainer.addEventListener( "animationend", _ => {
                                 preDialogContainer.remove();
-                                if(typeof dialogs[ stringIndex - 1 ].postFunction == "function") dialogs[ stringIndex - 1 ].postFunction();
+                                if(typeof dialogs[ preDialogContainer.dataset.index ].postFunction == "function") dialogs[ preDialogContainer.dataset.index ].postFunction();
                             });
                             preDialogContainer.classList.add("gone");
                         }, this.dialogTimePerDialog * 0.8 );
@@ -248,6 +250,9 @@ export class MascotController{
     // Enable webpage navigation
     WebReady(){
 
+        if(this.siteConstructorCalled) return;
+        this.siteConstructorCalled = true;
+        
         this.mascotLayer.classList.add( "ready" );
         if(this.siteConstructorFunction) this.siteConstructorFunction();
 
