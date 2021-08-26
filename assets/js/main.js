@@ -1,5 +1,7 @@
-import { MascotController } from "/portfolio/assets/js/mascot.js";
-import { LazyLoad } from "/portfolio/assets/js/lazyLoad.js";
+const mainPath = "/";
+
+import { MascotController } from `${mainPath}assets/js/mascot.js`;
+import { LazyLoad } from `${mainPath}assets/js/lazyLoad.js`;
 
 // KonamiCode
 window.addEventListener( 'load', _ => {
@@ -16,7 +18,7 @@ window.addEventListener( 'load', _ => {
                         playingMusic = true;
 
                         // Move your body!
-                        const secretSong = new Audio( "/assets/music/secret.mp3" );
+                        const secretSong = new Audio( `${mainPath}assets/music/secret.mp3` );
                         secretSong.play();
 
                         const stop = new DOMParser().parseFromString(
@@ -68,22 +70,22 @@ new MascotController( _ => {
                 <div class="title">${Localization.GetTranslate( "portfolio", "title" )}</div>
                 <div class="projects">
                     <div class="project" data-url="https://jankenup.com/">
-                        <div class="image" data-type="videogame" data-url="/assets/images/portfolio/jankenup.gif" data-lazy="true" data-lazy_type="background"></div>
+                        <div class="image" data-type="videogame" data-url="${mainPath}assets/images/portfolio/jankenup.gif" data-lazy="true" data-lazy_type="background"></div>
                         <div class="title">JanKenUP!</div>
                         <div class="description">${Localization.GetTranslate( "portfolio", "janken" )}</div>
                     </div>
                     <div class="project" data-url="https://cegonzalezrojas.github.io/konacode/">
-                        <div class="image" data-type="website" data-url="/assets/images/portfolio/konacode.gif" data-lazy="true" data-lazy_type="background"></div>
+                        <div class="image" data-type="website" data-url="${mainPath}assets/images/portfolio/konacode.gif" data-lazy="true" data-lazy_type="background"></div>
                         <div class="title">KonamiCode</div>
                         <div class="description">${Localization.GetTranslate( "portfolio", "konacode" )}</div>
                     </div>
                     <div class="project" data-url="https://playcausa.com/">
-                        <div class="image" data-type="web Application" data-url="/assets/images/portfolio/causa.gif" data-lazy="true" data-lazy_type="background"></div>
+                        <div class="image" data-type="web Application" data-url="${mainPath}assets/images/portfolio/causa.gif" data-lazy="true" data-lazy_type="background"></div>
                         <div class="title">Causa: Voices of the Dusk</div>
                         <div class="description">${Localization.GetTranslate( "portfolio", "causa" )}</div>
                     </div>
                     <div class="project" data-url="https://nieblagames.com/">
-                        <div class="image" data-type="website" data-url="/assets/images/portfolio/niebla.gif" data-lazy="true" data-lazy_type="background"></div>
+                        <div class="image" data-type="website" data-url="${mainPath}assets/images/portfolio/niebla.gif" data-lazy="true" data-lazy_type="background"></div>
                         <div class="title">Niebla Games</div>
                         <div class="description">${Localization.GetTranslate( "portfolio", "niebla" )}</div>
                     </div>
@@ -150,10 +152,10 @@ new MascotController( _ => {
     document.querySelector("[data-layer=main]").classList.add("ready");
 },
     [
-        "/assets/sounds/talk/talk_one.mp3",
-        "/assets/sounds/talk/talk_two.mp3",
-        "/assets/sounds/talk/talk_three.mp3",
-        "/assets/sounds/talk/talk_four.mp3",
+        `${mainPath}assets/sounds/talk/talk_one.mp3`,
+        `${mainPath}assets/sounds/talk/talk_two.mp3`,
+        `${mainPath}assets/sounds/talk/talk_three.mp3`,
+        `${mainPath}assets/sounds/talk/talk_four.mp3`,
     ],
 );
 
