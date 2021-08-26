@@ -43,8 +43,11 @@ class MascotController{
     dialogTimePerDialog = 1250;
     isTalking = false;
 
+    // Audios
+    audioOnTalk;
+
     // siteConstructorFunction: After mascot talk with the user, call the function to "construct" the website
-    constructor(siteConstructorFunction, postGoneFunction){
+    constructor(siteConstructorFunction, postGoneFunction, audioOnTalk){
 
         // Find the mascot structure
         this.mascotLayer = document.querySelector("[data-layer=mascot]");
@@ -54,8 +57,10 @@ class MascotController{
         // Find the dialog container
         this.dialogsContainer = this.mascot.querySelector(".mascot-dialog-container");
 
+        // Others
         this.siteConstructorFunction = typeof siteConstructorFunction == "function"? siteConstructorFunction : null;
         this.postGoneFunction = typeof postGoneFunction == "function"? postGoneFunction : null;
+        this.audioOnTalk = Array.isArray( audioOnTalk )? audioOnTalk : [];
 
         this.Events();
 
@@ -185,6 +190,9 @@ class MascotController{
                         lastStringIndex = stringIndex;
                         this.mascotMounth.dataset.status = this.mounthStatuses.TALK;
                         this.mascot.dataset.mod = dialogs[ stringIndex ].emotion;
+                        
+                        if( this.audioOnTalk.length ) new Audio( this.audioOnTalk[ Math.floor(Math.random() * this.audioOnTalk.length)] ).play();
+
                     }
 
                     let currentString = dialogs[ stringIndex ].string;
@@ -338,4 +346,9 @@ new MascotController( _ => {
 
 }, _ => {
     document.querySelector("[data-layer=main]").classList.add("ready");
-});
+},
+    ["/assets/sounds/talk/talk_one.mp3"],
+    ["/assets/sounds/talk/talk_two.mp3"],
+    ["/assets/sounds/talk/talk_three.mp3"],
+    ["/assets/sounds/talk/talk_four.mp3"]
+);
