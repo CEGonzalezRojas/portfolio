@@ -21,7 +21,7 @@
     --mascot-dialog-shadow: 0px 0px 20px var(--alabaster);
     --h1-shadow: 2px 2px 6px var(--cerulean-crayola);
     --p-shadow: 1px 1px 3px var(--cerulean-crayola);
-    --p-shadow-black: 1px 1px 3px var(--purple-navy);
+    --p-shadow-black: 2px 2px 6px var(--cerulean-crayola);
     --type-text-shadow: 1px 1px 0px var(--xiketic);
     --type-shadow: 0px 0px 20px var(--cerulean-crayola);
     --iframe-shadow: 0px 0px 20px var(--cerulean-crayola);

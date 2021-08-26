@@ -1,0 +1,106 @@
+/* Similar font */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+:root{
+    --feedback-color: #ffffff;
+    --feedback-bg-color-main: #ffffff;
+    --feedback-bg-color-second: #ffffff;
+}
+
+.konafeed{
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Fredoka One', cursive;
+    width: 100%;
+    padding: 10px;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.konafeed > div{
+    width: 24px;
+    height: 24px;
+    color: var(--feedback-color);
+    -webkit-animation: konafeed-key-appear 0.2s ease-in-out;
+    animation: konafeed-key-appear 0.2s ease-in-out;
+}
+
+.konafeed > div.hide{
+    -webkit-animation: konafeed-key-disappear 0.2s 0.2s ease-in-out;
+    animation: konafeed-key-disappear 0.2s 0.2s ease-in-out;
+}
+
+.konafeed > div:not(:first-child){
+    margin-left: 4px;
+}
+
+.konafeed > div::before{
+    content: attr(data-key);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 20px;
+    min-height: 20px;
+    border: 2px solid var(--feedback-color);
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,.4);
+    text-shadow: 0px 0px 10px rgba(0,0,0,.4);
+    font-size: 0.7em;
+}
+
+/* Animations */
+@-webkit-keyframes konafeed-key-appear{
+    0%{
+        max-width: 0px;
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100%{
+        max-width: 20px;
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes konafeed-key-appear {
+    0%{
+        max-width: 0px;
+        transform: translateY(24px);
+        opacity: 0;
+    }
+    100%{
+        max-width: 24px;
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes konafeed-key-disappear{
+    0%{
+        max-width: 20px;
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    100%{
+        max-width: 0px;
+        transform: translateY(20px);
+        opacity: 0;
+    }
+}
+
+@keyframes konafeed-key-disappear {
+    0%{
+        max-width: 24px;
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    100%{
+        max-width: 0px;
+        transform: translateY(24px);
+        opacity: 0;
+    }
+}
