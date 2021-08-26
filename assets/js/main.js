@@ -1,7 +1,7 @@
 const mainPath = "/portfolio/";
 
-import { MascotController } from "/assets/js/mascot.js";
-import { LazyLoad } from "/assets/js/lazyLoad.js";
+import { MascotController } from "/portfolio/assets/js/mascot.js";
+import { LazyLoad } from "/portfolio/assets/js/lazyLoad.js";
 
 // KonamiCode
 window.addEventListener( 'load', _ => {
