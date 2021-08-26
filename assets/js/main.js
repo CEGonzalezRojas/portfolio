@@ -85,9 +85,30 @@ new MascotController( _ => {
 
     document.body.append(mainLayer);
 
+    // Post open footer
+    let itsJustAPrank = false;
+    const postOpenFooter = _ => {
+        
+        const rick = new DOMParser().parseFromString(
+            `
+            <div class="rick">${Localization.GetTranslate( "rick", "one" )}</div>
+            `,
+            "text/html" ).body.firstChild;
+        rick.addEventListener("animationend", _ => {
+            rick.remove();
+        });
+        document.body.append(rick);
+
+        window.removeEventListener("focus", postOpenFooter);
+    };
+
     // Add link
     mainLayer.querySelector(".footer > a").addEventListener( "click", _ => {
         window.open( "https://www.youtube.com/watch?v=dQw4w9WgXcQ&feature=youtu.be", "_blank" );
+        if(!itsJustAPrank){
+            itsJustAPrank = true;
+            window.addEventListener("focus", postOpenFooter);
+        }
     });
 
     mainLayer.querySelectorAll("[data-email]").forEach(email => {

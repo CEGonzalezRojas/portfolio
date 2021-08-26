@@ -160,6 +160,18 @@ class Localization{
             "es-cl":{
                 one         : "Hecho con amor con <a>Easy Landing</a>",
             }
+        },
+
+        rick:{
+            en:{
+                one         : "I had to do it... sorry. Made from scratch using pure JS and CSS.",
+            },
+            es:{
+                one         : "Tenía que hacerlo... lo siento. Hecho desde cero usando JS y CSS puros.",
+            },
+            "es-cl":{
+                one         : "Te la hice... lo siento. Hecho desde cero usando JS y CSS puros.",
+            }
         }
     };
 
