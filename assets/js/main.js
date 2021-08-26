@@ -60,49 +60,49 @@ new MascotController( _ => {
         `
         <div data-layer="main">
             <div class="intro">
-                <h1>${Localization.GetTranslate( "main", "introTitle" )}</h1>
-                <p>${Localization.GetTranslate( "main", "introPOne" )}</p>
-                <p>${Localization.GetTranslate( "main", "introPTwo" )}</p>
-                <p>${Localization.GetTranslate( "main", "introPThree" )}</p>
-                <p>${Localization.GetTranslate( "main", "introPFour" )}</p>
+                <h1>${window.Localization.GetTranslate( "main", "introTitle" )}</h1>
+                <p>${window.Localization.GetTranslate( "main", "introPOne" )}</p>
+                <p>${window.Localization.GetTranslate( "main", "introPTwo" )}</p>
+                <p>${window.Localization.GetTranslate( "main", "introPThree" )}</p>
+                <p>${window.Localization.GetTranslate( "main", "introPFour" )}</p>
             </div>
             <div class="portfolio">
-                <div class="title">${Localization.GetTranslate( "portfolio", "title" )}</div>
+                <div class="title">${window.Localization.GetTranslate( "portfolio", "title" )}</div>
                 <div class="projects">
                     <div class="project" data-url="https://jankenup.com/">
                         <div class="image" data-type="videogame" data-url="${mainPath}assets/images/portfolio/jankenup.gif" data-lazy="true" data-lazy_type="background"></div>
                         <div class="title">JanKenUP!</div>
-                        <div class="description">${Localization.GetTranslate( "portfolio", "janken" )}</div>
+                        <div class="description">${window.Localization.GetTranslate( "portfolio", "janken" )}</div>
                     </div>
                     <div class="project" data-url="https://cegonzalezrojas.github.io/konacode/">
                         <div class="image" data-type="website" data-url="${mainPath}assets/images/portfolio/konacode.gif" data-lazy="true" data-lazy_type="background"></div>
                         <div class="title">KonamiCode</div>
-                        <div class="description">${Localization.GetTranslate( "portfolio", "konacode" )}</div>
+                        <div class="description">${window.Localization.GetTranslate( "portfolio", "konacode" )}</div>
                     </div>
                     <div class="project" data-url="https://playcausa.com/">
                         <div class="image" data-type="web Application" data-url="${mainPath}assets/images/portfolio/causa.gif" data-lazy="true" data-lazy_type="background"></div>
                         <div class="title">Causa: Voices of the Dusk</div>
-                        <div class="description">${Localization.GetTranslate( "portfolio", "causa" )}</div>
+                        <div class="description">${window.Localization.GetTranslate( "portfolio", "causa" )}</div>
                     </div>
                     <div class="project" data-url="https://nieblagames.com/">
                         <div class="image" data-type="website" data-url="${mainPath}assets/images/portfolio/niebla.gif" data-lazy="true" data-lazy_type="background"></div>
                         <div class="title">Niebla Games</div>
-                        <div class="description">${Localization.GetTranslate( "portfolio", "niebla" )}</div>
+                        <div class="description">${window.Localization.GetTranslate( "portfolio", "niebla" )}</div>
                     </div>
                 </div>
             </div>
             <div class="youtube">
                 <div class="title">Youtube</div>
-                <p>${Localization.GetTranslate( "youtube", "one" )}</p>
+                <p>${window.Localization.GetTranslate( "youtube", "one" )}</p>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/g3ZMN37UwSg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p>${Localization.GetTranslate( "youtube", "two" )}</p>
+                <p>${window.Localization.GetTranslate( "youtube", "two" )}</p>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/0mqdJTMoOeM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="contact">
-                <div class="title">${Localization.GetTranslate( "contact", "title" )}</div>
-                <p>${Localization.GetTranslate( "contact", "one" )}</a></p>
+                <div class="title">${window.Localization.GetTranslate( "contact", "title" )}</div>
+                <p>${window.Localization.GetTranslate( "contact", "one" )}</a></p>
             </div>
-            <div class="footer">${Localization.GetTranslate( "footer", "one" )}</div>
+            <div class="footer">${window.Localization.GetTranslate( "footer", "one" )}</div>
         </div>
         `,
         "text/html" ).body.firstChild;
@@ -115,7 +115,7 @@ new MascotController( _ => {
         
         const rick = new DOMParser().parseFromString(
             `
-            <div class="rick">${Localization.GetTranslate( "rick", "one" )}</div>
+            <div class="rick">${window.Localization.GetTranslate( "rick", "one" )}</div>
             `,
             "text/html" ).body.firstChild;
         rick.addEventListener("animationend", _ => {
