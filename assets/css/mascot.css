@@ -3,6 +3,7 @@
 .mascot{
     display: grid;
     justify-items: center;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .mascot > .body{
@@ -153,6 +154,7 @@
     flex-direction: column-reverse;
     height: 0px;
     width: max-content;
+    max-width: 80vw;
 }
 
 .mascot-dialog-container > .mascot-dialog{
