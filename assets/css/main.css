@@ -199,6 +199,10 @@ kcjoystick{
         height: auto;
     }
 
+    *[data-layer=mascot].ready{
+        transform: translateY( calc( -50vh + 125px ) );
+    }
+
 }
 
 /* Animations */
