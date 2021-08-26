@@ -1,4 +1,5 @@
 import { MascotController } from "/assets/js/mascot.js";
+import { LazyLoad } from "/assets/js/lazyLoad.js";
 
 // KonamiCode
 window.addEventListener( 'load', _ => {
@@ -45,22 +46,22 @@ new MascotController( _ => {
                 <div class="title">${Localization.GetTranslate( "portfolio", "title" )}</div>
                 <div class="projects">
                     <div class="project">
-                        <div class="image" data-type="videogame"></div>
+                        <div class="image" data-type="videogame" data-url="/assets/images/portfolio/jankenup.gif" data-lazy="true" data-lazy_type="background"></div>
                         <div class="title">JanKenUP!</div>
                         <div class="description">${Localization.GetTranslate( "portfolio", "janken" )}</div>
                     </div>
                     <div class="project">
-                        <div class="image" data-type="website"></div>
+                        <div class="image" data-type="website" data-url="/assets/images/portfolio/konacode.gif" data-lazy="true" data-lazy_type="background"></div>
                         <div class="title">KonamiCode</div>
                         <div class="description">${Localization.GetTranslate( "portfolio", "konacode" )}</div>
                     </div>
                     <div class="project">
-                        <div class="image" data-type="web Application"></div>
+                        <div class="image" data-type="web Application" data-url="/assets/images/portfolio/causa.gif" data-lazy="true" data-lazy_type="background"></div>
                         <div class="title">Causa: Voices of the Dusk</div>
                         <div class="description">${Localization.GetTranslate( "portfolio", "causa" )}</div>
                     </div>
                     <div class="project">
-                        <div class="image" data-type="website"></div>
+                        <div class="image" data-type="website" data-url="/assets/images/portfolio/niebla.gif" data-lazy="true" data-lazy_type="background"></div>
                         <div class="title">Niebla Games</div>
                         <div class="description">${Localization.GetTranslate( "portfolio", "niebla" )}</div>
                     </div>
@@ -105,3 +106,5 @@ new MascotController( _ => {
         "/assets/sounds/talk/talk_four.mp3",
     ],
 );
+
+new LazyLoad();

@@ -1,4 +1,4 @@
-class LazyLoad{
+export class LazyLoad{
     
     constructor(){
 

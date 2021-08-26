@@ -78,21 +78,21 @@ class Localization{
         main:{
             en:{
                 introTitle      : "Hi!",
-                introPOne       : `My name is Claudio Esteban González Rojas and I have ~${new Date().getFullYear() - 2011} years of experience developing software.`,
+                introPOne       : `My name is <span class="featured">Claudio Esteban González Rojas</span> and I have ~${new Date().getFullYear() - 2011} years of experience developing software.`,
                 introPTwo       : "Throughout these years, I have developed mobile applications, web applications and video games.",
                 introPThree     : "Here are some examples of my work (If you need my resume, don't hesitate to <a data-email>contact me</a>)",
                 introPFour      : "Thanks for coming.",
             },
             es:{
                 introTitle  : "¡Hola!",
-                introPOne   : `Mi nombre es Claudio Esteban González Rojas y tengo ~${new Date().getFullYear() - 2011} años de experiencia desarrollando software.`,
+                introPOne   : `Mi nombre es <span class="featured">Claudio Esteban González Rojas</span> y tengo ~${new Date().getFullYear() - 2011} años de experiencia desarrollando software.`,
                 introPTwo   : "A lo largo de estos años, he desarrollado aplicaciones móviles, aplicaciones web y videojuegos.",
                 introPThree : "Aquí hay unos ejemplos de mi trabajo (Si necesitas mi curriculum, no dudes en <a data-email>contactarme</a>).",
                 introPFour  : "Gracias por venir."
             },
             "es-cl":{
                 introTitle  : "¡Hola!",
-                introPOne   : `Mi nombre es Claudio Esteban González Rojas y tengo ~${new Date().getFullYear() - 2011} años de experiencia desarrollando software.`,
+                introPOne   : `Mi nombre es <span class="featured">Claudio Esteban González Rojas</span> y tengo ~${new Date().getFullYear() - 2011} años de experiencia desarrollando software.`,
                 introPTwo   : "A lo largo de estos años, he desarrollado aplicaciones móviles, aplicaciones web y videojuegos.",
                 introPThree : "Aquí hay unos ejemplos de lo que hago (Si necesitas mi curriculum, no dudes en <a data-email>contactarme</a>).",
                 introPFour  : "Gracias por venir."
