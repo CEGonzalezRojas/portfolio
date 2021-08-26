@@ -169,6 +169,24 @@ a{
     animation: rick-roll 5s ease-in-out 1 forwards;
 }
 
+.stop{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    animation: stop-button-show 0.2s ease-in-out 1;
+}
+
+.stop.gone{
+    animation: stop-button-gone 0.2s ease-in-out 1;
+}
+
+.stop::before{
+    content: '🔇';
+    font-size: 4em;
+    text-shadow: var(--featured-text-shadow);
+    cursor: pointer;
+}
+
 /* Responsive */
 @media (max-width: 580px) {
     
@@ -194,4 +212,42 @@ a{
         opacity: 0;
     }
 
+}
+
+@keyframes rick-roll{
+    0%{
+        opacity: 0;
+    }
+    20%{
+        opacity: 1;
+    }
+    80%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+
+}
+
+@keyframes stop-button-show {
+    0%{
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes stop-button-gone {
+    0%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    100%{
+        opacity: 0;
+        transform: translateY(40px);
+    }
 }

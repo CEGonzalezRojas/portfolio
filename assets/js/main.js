@@ -5,16 +5,38 @@ import { LazyLoad } from "/assets/js/lazyLoad.js";
 window.addEventListener( 'load', _ => {
         
     let completeKonami = false;
+    let playingMusic = false;
 
     new KonaCode({
             codes: [
                 {
                     callback: _ =>{
 
-                        // Reset
-                        setTimeout( _ => {
-                            completeKonami = false;
-                        }, 1400 );
+                        if(playingMusic) return;
+                        playingMusic = true;
+
+                        // Move your body!
+                        const secretSong = new Audio( "/assets/music/secret.mp3" );
+                        secretSong.play();
+
+                        const stop = new DOMParser().parseFromString(
+                            `
+                            <div class="stop"></div>
+                            `,
+                            "text/html" ).body.firstChild;
+
+                        // Events
+                        stop.addEventListener("click", _ => {
+                            playingMusic = false;
+                            secretSong.pause();
+                            secretSong;
+                            stop.classList.add("gone");
+                        });
+
+                        stop.addEventListener("animationend", e => {
+                            if(e.animationName == "stop-button-gone") stop.remove();
+                        });
+                        document.body.append(stop);
 
                     },
                     progress: (count, percent) => {

@@ -178,6 +178,8 @@ export class MascotController{
             let lastStringIndex = -1;
             let letterIndex = 0;
             let dialogContainer;
+            let currentAudioIndex = -1;
+            let lastAudioIndex = -1;
 
             const talkFunction = _ => {
 
@@ -190,7 +192,12 @@ export class MascotController{
                         this.mascotMounth.dataset.status = this.mounthStatuses.TALK;
                         this.mascot.dataset.mod = dialogs[ stringIndex ].emotion;
                         
-                        if( this.audioOnTalk.length ) new Audio( this.audioOnTalk[ Math.floor(Math.random() * this.audioOnTalk.length)] ).play();
+                        do{
+                            currentAudioIndex = Math.floor(Math.random() * this.audioOnTalk.length);
+                        }while(currentAudioIndex == lastAudioIndex);
+                        lastAudioIndex = currentAudioIndex;
+
+                        if( this.audioOnTalk.length ) new Audio( this.audioOnTalk[ currentAudioIndex ] ).play();
 
                     }
 
