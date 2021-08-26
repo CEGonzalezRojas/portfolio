@@ -1,0 +1,401 @@
+/* Mascot */
+
+.mascot{
+    display: grid;
+    justify-items: center;
+}
+
+.mascot > .body{
+    display: grid;
+    grid-template-rows: max-content max-content;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: 10px;
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+    box-shadow: var(--mascot-body-shadow);
+    background-color: var(--maximum-yellow-red);
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.mascot > .body > .eyes{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    height: 30px;
+    width: 80px;
+}
+
+.mascot > .body > .eyes > div{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: calc( 100% - 4px );
+    border-radius: 100%;
+    background-color: var(--almond);
+    border-bottom: 4px solid rgba(0,0,0,.8);
+}
+
+.mascot > .body > .eyes > div > div{
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+    background-color: var(--xiketic);
+}
+
+.mascot > .body > .eyes > div > div::before{
+    content: '';
+    display: block;
+    position: absolute;
+    height: 4px;
+    width: 4px;
+    border-radius: 4px;
+    background-color: var(--almond);
+}
+
+.mascot > .body > .eyes > div::before{
+    content: '';
+    display: block;
+    position: absolute;
+    top: -12px;
+    height: 10px;
+    width: 100%;
+    border-radius: 4px;
+    background-color: var(--xiketic);
+    z-index: 1;
+    transition: transform 0.2s ease-in-out;
+}
+
+.mascot > .body > .eyes > div::after{
+    content: '';
+    display: block;
+    position: absolute;
+    border-radius: 100%;
+    top: 0;
+    height: 0%;
+    width: 100%;
+    background-color: var(--maximum-yellow-red);
+    transition: height 0.2s ease-in-out;
+}
+
+.mascot[data-status=sleep] > .body > .eyes > div::after{
+    height: 100%;
+}
+
+.mascot > .body > .mounth{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: var(--fire-opal);
+    height: 24px;
+    border-radius: 24px;
+    border: 2px solid rgba(0,0,0,.25);
+}
+
+.mascot > .body > .mounth::before{
+    content: '';
+    display: block;
+    height: 4px;
+    width: 50px;
+    border-radius: 4px;
+    background-color: var(--xiketic);
+}
+
+.mascot > .body > .blush{
+    position: absolute;
+    top: calc( 50% - 8px );
+    left: calc( 50% - 56px );
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 80px;
+}
+
+.mascot > .body > .blush::before, .mascot > .body > .blush::after{
+    content: '';
+    display: block;
+    height: 16px;
+    width: 16px;
+    border-radius: 16px;
+    background-color: var(--fire-opal);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* Emotions */
+.mascot[data-mod=angry] > .body > .eyes > div::before{
+    transform: translateY(12px);
+}
+
+.mascot[data-mod=surprised] > .body > .eyes > div::before{
+    transform: translateY(-12px);
+}
+
+.mascot[data-mod=surprised] > .body > .blush::before, .mascot[data-mod=surprised] > .body > .blush::after{
+    opacity: 1;
+}
+
+.mascot[data-mod=working] > .body > .eyes > div:first-child:before{
+    transform: translateY(-12px);
+}
+
+
+/* Dialogs */
+.mascot-dialog-container{
+    position: absolute;
+    display: flex;
+    justify-items: center;
+    flex-direction: column-reverse;
+    height: 0px;
+    width: max-content;
+}
+
+.mascot-dialog-container > .mascot-dialog{
+    position: relative;
+    background-color: var(--alabaster);
+    box-shadow: var(--mascot-dialog-shadow);
+    width: fit-content;
+    border-radius: 10px;
+    margin: auto;
+    padding: 8px;
+    border-bottom: 4px solid rgba(0,0,0,0.1);
+    border-left: 2px solid rgba(0,0,0,.1);
+    border-right: 2px solid rgba(0,0,0,.1);
+    text-align: center;
+    animation: mascot-dialog-appears 1 0.2s ease-in-out forwards;
+}
+
+.mascot-dialog.gone{
+    animation: mascot-dialog-disappears 1 0.2s ease-in-out forwards;
+}
+
+/***** Mascot animation by status *****/
+
+/* General */
+
+.mascot > .body > .mounth[data-status=talk]{
+    animation: mascot-mouth-talk infinite .8s ease-in-out;
+}
+
+.mascot[data-status=sleep], .mascot[data-status=awake], .mascot[data-status=byebye], .mascot[data-status=gone]{
+    animation: mascot-sleep infinite 4s ease-in-out;
+}
+
+/* Sleep */
+.mascot[data-status=sleep] > .body > .mounth{
+    animation: mascot-mouth-sleep 4s infinite ease-in-out;
+}
+
+/* Shake */
+.mascot[data-status=shake]{
+    animation: mascot-shake 2 .25s ease-in-out;
+}
+
+/* Awake */
+.mascot[data-status=awake] > .body > .eyes > div::after{
+    animation: mascot-eyes-blink infinite 5s 1s ease-in-out;
+}
+
+/* Bye Bye */
+.mascot[data-status=gone] > .body{
+    animation: mascot-gone 1 .8s ease-in-out forwards;
+}
+
+/***** Mascot animation by status *****/
+
+/* Animations */
+@keyframes mascot-sleep {
+    0%{
+        transform: translateY(0px) scale(1,1);
+    }
+    60%{
+        transform: translateY(-10px) scale(1.025,1.025);
+    }
+    100%{
+        transform: translateY(0px) scale(1,1);
+    }
+}
+
+@keyframes mascot-mouth-sleep {
+    0%{
+        transform: scaleX(100%) scaleY(100%);
+    }
+    60%{
+        transform: scaleX(90%) scaleY(110%);
+    }
+    100%{
+        transform: scaleX(100%) scaleY(100%);
+    }
+}
+
+@keyframes mascot-shake {
+    0%{
+        transform: translate(0px,-5px);
+    }
+    10%{
+        transform: translate(5px,-2px);
+    }
+    20%{
+        transform: translate(-5px,-5px);
+    }
+    30%{
+        transform: translate(10px,0px);
+    }
+    40%{
+        transform: translate(2px,4px);
+    }
+    50%{
+        transform: translate(-4px,8px);
+    }
+    60%{
+        transform: translate(5px,0px);
+    }
+    70%{
+        transform: translate(-5px,-10px);
+    }
+    80%{
+        transform: translate(10px,-5px);
+    }
+    90%{
+        transform: translate(-4px,4px);
+    }
+    100%{
+        transform: translate(0px,0px);
+    }
+}
+
+@keyframes mascot-eyes-blink{
+    0%{
+        height: 0%;
+    }
+    3%{
+        height: 100%;
+    }
+    5%{
+        height: 0%;
+    }
+    50%{
+        height: 0%;
+    }
+    53%{
+        height: 100%;
+    }
+    55%{
+        height: 0%;
+    }
+    57%{
+        height: 100%;
+    }
+    60%{
+        height: 0%;
+    }
+}
+
+@keyframes mascot-mouth-talk {
+    0%{
+        transform: scaleX(100%) scaleY(100%);
+    }
+    40%{
+        transform: scaleX(90%) scaleY(110%);
+    }
+    60%{
+        transform: scaleX(110%) scaleY(90%);
+    }
+    80%{
+        transform: scaleX(80%) scaleY(120%);
+    }
+    100%{
+        transform: scaleX(100%) scaleY(100%);
+    }
+}
+
+@keyframes mascot-dialog-appears {
+    from{
+        margin-top: 0px;
+        opacity: 0;
+        padding: 0px;
+        border-bottom: 0px;
+        max-height: 0px;
+        transform: translateY(10px);
+    }
+    to{
+        margin-top: 8px;
+        opacity: 1;
+        padding: 8px;
+        border-bottom: 4px;
+        max-height: 100px;
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes mascot-dialog-appears-bottom {
+    from{
+        margin-top: 0px;
+        opacity: 0;
+        padding: 0px;
+        border-bottom: 0px;
+        max-height: 0px;
+        transform: translateY(20px);
+    }
+    to{
+        margin-top: 8px;
+        opacity: 1;
+        padding: 8px;
+        border-bottom: 4px;
+        max-height: 100px;
+        transform: translateY(50px);
+    }
+}
+
+@keyframes mascot-dialog-disappears {
+    from{
+        opacity: 1;
+        transform: translateY(-20px);
+    }
+    to{
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+}
+
+@keyframes mascot-dialog-disappears-bottom {
+    from{
+        opacity: 1;
+        transform: translateY(50px);
+    }
+    to{
+        opacity: 0;
+        transform: translateY(80px);
+    }
+}
+
+@keyframes mascot-gone {
+    0%{
+        opacity: 1;
+        transform: scale(1,1);
+    }
+    60%{
+        opacity: 1;
+        transform: scale(1.1,1.1);
+    }
+    100%{
+        opacity: 0;
+        transform: scale(0,0);
+    }
+}
+
+@keyframes main-layer {
+    from{
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    else{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}

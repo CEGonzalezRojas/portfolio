@@ -1,0 +1,335 @@
+:root{
+    --switch-black: #1a1a17;
+    --switch-red: #ff3c28;
+    --switch-blue: #27e0fc;
+    --switch-yellow: #e6ff00;
+    --switch-green: #1edc00;
+    --switch-pink: #ff3278;
+    --switch-purple: #b400e6;
+    --switch-gray: #828282;
+}
+
+/* Switch */
+kcjoystick[data-skin|=switch]{
+    display: flex;
+    position: fixed;
+    top: calc( 50% - 200px );
+    left: 0px;
+    width: 130px;
+    height: 400px;
+    font-family: 'Helvetica', sans-serif;
+    transform: translate(-140px,0px);
+    transition: transform 0.4s 0.1s ease-in-out;
+}
+
+kcjoystick[data-skin|=switch].show{
+    transform: translate(0px,0px);
+}
+
+kcjoystick[data-skin|=switch] > .right{
+    position: absolute;
+    top: 0px;
+    left: 22px;
+    width: 32px;
+    height: 5px;
+    background-color: var(--switch-black);
+    border-radius: 5px 2px 0px 0px;
+}
+
+kcjoystick[data-skin|=switch] > .right.d{
+    position: absolute;
+    top: 0px;
+    left: 15px;
+    width: 111px;
+    height: 89px;
+    background-color: var(--switch-black);
+    border-radius: 10px 68px 0px 0px;
+}
+
+kcjoystick[data-skin|=switch] > .front{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 392px;
+    border-radius: 0px 82px 82px 0px;
+    background-color: var(--switch-red);
+    border-bottom: 3px solid rgba(0,0,0,.2);
+    border-top: 3px solid rgba(255,255,255,.2);
+    box-shadow: 5px 10px 10px rgba(0,0,0,.5);
+    box-sizing: border-box;
+    transition: background-color 0.2s ease-in-out;
+}
+
+kcjoystick[data-skin|=switch] > .buttons{
+    position: absolute;
+    width: 97px;
+    height: 273px;
+    top: 32px;
+    left: 10px;
+}
+
+kcjoystick[data-skin|=switch] > .buttons > [p]{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 22px;
+    height: 22px;
+}
+
+kcjoystick[data-skin|=switch] > .buttons > [p]::before, kcjoystick[data-skin|=switch] > .buttons > [p]::after{
+    position: absolute;
+    top: 7px;
+    content: '';
+    display: block;
+    background-color: var(--switch-black);
+    height: 8px;
+    width: 100%;
+    border-radius: 2px;
+}
+
+kcjoystick[data-skin|=switch] > .buttons > [p]::before{
+    border-top: 1px solid rgba(255,255,255,0.1);
+    box-sizing: border-box;
+    box-shadow: 0px 1px 4px rgba(0,0,0,.5);
+}
+
+kcjoystick[data-skin|=switch] > .buttons > [p]::after{
+    transform: rotate(90deg);
+    border-left: 1px solid rgba(255,255,255,0.1);
+    box-sizing: border-box;
+}
+
+kcjoystick[data-skin|=switch] > .buttons > [x], kcjoystick[data-skin|=switch] > .buttons > [y], kcjoystick[data-skin|=switch] > .buttons > [a], kcjoystick[data-skin|=switch] > .buttons > [b]{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 27px;
+    height: 27px;
+    border-radius: 27px;
+    background: var(--switch-black);
+    color: var(--switch-gray);
+    box-shadow: 0px 2px 5px rgba(0,0,0,.5);
+    font-size: 0.8em;
+}
+
+kcjoystick[data-skin|=switch] > .buttons > [x]::before, kcjoystick[data-skin|=switch] > .buttons > [y]::before, kcjoystick[data-skin|=switch] > .buttons > [a]::before, kcjoystick[data-skin|=switch] > .buttons > [b]::before{
+    content: '';
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-radius: 100%;
+}
+
+kcjoystick[data-skin|=switch] > .buttons > [x]{
+    top: 29px;
+    left: 37px;
+    cursor: pointer;
+}
+
+kcjoystick[data-skin|=switch] > .buttons > [x]:after{
+    content: 'X';
+}
+
+kcjoystick[data-skin|=switch] > .buttons > [y]{
+    top: 59px;
+    left: 6px;
+    cursor: pointer;
+}
+
+kcjoystick[data-skin|=switch] > .buttons > [y]:after{
+    content: 'Y';
+}
+
+kcjoystick[data-skin|=switch] > .buttons > [a]{
+    top: 59px;
+    right: 2px;
+    cursor: pointer;
+}
+
+kcjoystick[data-skin|=switch] > .buttons > [a]:after{
+    content: 'A';
+}
+
+kcjoystick[data-skin|=switch] > .buttons > [b]{
+    top: 88px;
+    left: 37px;
+    cursor: pointer;
+}
+
+kcjoystick[data-skin|=switch] > .buttons > [b]:after{
+    content: 'B';
+}
+
+kcjoystick[data-skin|=switch] > .buttons > [a][clicked], kcjoystick[data-skin|=switch] > .buttons > [b][clicked], kcjoystick[data-skin|=switch] > .buttons > [x][clicked], kcjoystick[data-skin|=switch] > .buttons > [y][clicked]{
+    -webkit-animation: switch-joystick-clicked 0.4s 1;
+    animation: switch-joystick-clicked 0.4s 1;
+}
+
+kcjoystick[data-skin|=switch] > .buttons > [t]{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 61px;
+    left: 21px;
+    height: 60px;
+    width: 60px;
+    border-radius: 60px;
+    background: var(--switch-black);
+    box-shadow: 0px 0px 10px rgba(0,0,0,.6);
+}
+
+kcjoystick[data-skin|=switch] > .buttons > [t]::before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    position: absolute;
+    background: rgba(255,255,255,0.05);
+    border-top: 2px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    box-sizing: border-box;
+}
+
+kcjoystick[data-skin|=switch] > .buttons > [t]::after{
+    content: '';
+    width: 80%;
+    height: 80%;
+    border-radius: 80%;
+    display: block;
+    position: relative;
+    background: var(--switch-black);
+}
+
+kcjoystick[data-skin|=switch] > .buttons > [h]{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0px;
+    left: 13px;
+    height: 33px;
+    width: 33px;
+    border-radius: 33px;
+    background: var(--switch-black);
+    box-shadow: 0px 1px 5px rgba(0,0,0,.5);
+}
+
+kcjoystick[data-skin|=switch] > .buttons > [h]::before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    position: absolute;
+    background: rgba(255,255,255,0.2);
+    border-top: 2px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    box-sizing: border-box;
+}
+
+kcjoystick[data-skin|=switch] > .buttons > [h]::after{
+    content: '';
+    width: 80%;
+    height: 80%;
+    border-radius: 80%;
+    display: block;
+    position: relative;
+    background: var(--switch-black);
+}
+
+/* Front variatons */
+kcjoystick[data-skin=switch-blue] > .front{ background-color: var(--switch-blue); }
+kcjoystick[data-skin=switch-yellow] > .front{ background-color: var(--switch-yellow); }
+kcjoystick[data-skin=switch-green] > .front{ background-color: var(--switch-green); }
+kcjoystick[data-skin=switch-pink] > .front{ background-color: var(--switch-pink); }
+kcjoystick[data-skin=switch-purple] > .front{ background-color: var(--switch-purple); }
+kcjoystick[data-skin=switch-gray] > .front{ background-color: var(--switch-gray); }
+kcjoystick[data-skin=switch-rainbow] > .front{
+    animation: switch-anim-rainbow 1.2s infinite;
+}
+
+/* Animations */
+@-webkit-keyframes switch-anim-rainbow{
+    0%{
+        background-color: var(--switch-red);
+    }
+    16%{
+        background-color: var(--switch-blue);
+    }
+    32%{
+        background-color: var(--switch-yellow);
+    }
+    48%{
+        background-color: var(--switch-green);
+    }
+    64%{
+        background-color: var(--switch-pink);
+    }
+    80%{
+        background-color: var(--switch-purple);
+    }
+    100%{
+        background-color: var(--switch-red);
+    }
+}
+
+@-webkit-keyframes switch-joystick-clicked{
+    0%{
+        font-size: 0.8em;
+        box-shadow: -4px 0px 2px rgba(0,0,0,.2);
+    }
+    50%{
+        
+        font-size: 0.7em;
+        box-shadow: none;
+    }
+    100%{
+        font-size: 0.8em;
+        box-shadow: -4px 0px 2px rgba(0,0,0,.2);
+    }
+}
+
+@keyframes switch-anim-rainbow {
+    0%{
+        background-color: var(--switch-red);
+    }
+    16%{
+        background-color: var(--switch-blue);
+    }
+    32%{
+        background-color: var(--switch-yellow);
+    }
+    48%{
+        background-color: var(--switch-green);
+    }
+    64%{
+        background-color: var(--switch-pink);
+    }
+    80%{
+        background-color: var(--switch-purple);
+    }
+    100%{
+        background-color: var(--switch-red);
+    }
+}
+
+@keyframes switch-joystick-clicked{
+    0%{
+        font-size: 0.8em;
+        box-shadow: -4px 0px 2px rgba(0,0,0,.2);
+    }
+    50%{
+        
+        font-size: 0.7em;
+        box-shadow: none;
+    }
+    100%{
+        font-size: 0.8em;
+        box-shadow: -4px 0px 2px rgba(0,0,0,.2);
+    }
+}
