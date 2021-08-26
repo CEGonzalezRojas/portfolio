@@ -10,32 +10,29 @@ class Localization{
             en:{
                 one     : "WHAT?!",
                 two     : "Oh! ... I'm just resting my eyes.",
-                three   : "Don Claudio put me in charge.",
-                four    : "I will enable the web for you in a moment.",
-                five    : "...",
-                six     : "Ready, I'm going to sleep.",
-                seven   : "I mean... to fix some bugs.",
-                eight   : "Have a great day!"
+                three   : "Don Claudio put me in charge. ",
+                four    : "I will enable the web for you in a moment...",
+                five    : "Ready, I'm going to sleep.",
+                six     : "I mean... to fix some bugs.",
+                seven   : "Have a great day!"
             },
             es:{
                 one     : "¡¿QUÉ PASO?!",
                 two     : "Ah! ... Solo estaba descansando.",
                 three   : "Don Claudio me dejo a cargo.",
-                four    : "Le habilitaré la web en un momento.",
-                five    : "...",
-                six     : "Listo, me voy a dormir.",
-                seven   : "Digo... a corregir unos errores.",
-                eight   : "¡Que tenga un buen día!"
+                four    : "Le habilitaré la web en un momento...",
+                five    : "Listo, me voy a dormir.",
+                six     : "Digo... a corregir unos errores.",
+                seven   : "¡Que tenga un buen día!"
             },
             "es-cl":{
                 one     : "¡¿QUÉ PASO?!",
                 two     : "Ah! ... Estaba descansando los ojos.",
                 three   : "Don Claudio me dejo a cargo.",
                 four    : "Te habilitaré la página al toque...",
-                five    : "...",
-                six     : "Listo, me voy al tuto.",
-                seven   : "Digo... a corregir unos errores.",
-                eight   : "¡Que te vaiga bien!"
+                five    : "Listo, me voy al tuto.",
+                six     : "Digo... a corregir unos errores.",
+                seven   : "¡Que te vaiga bien!"
             }
         },
 

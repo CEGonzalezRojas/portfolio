@@ -127,11 +127,10 @@ export class MascotController{
                         { string: Localization.GetTranslate( "grettings", "one" ), emotion: this.emotions.ANGRY },
                         { string: Localization.GetTranslate( "grettings", "two" ), emotion: this.emotions.SURPRISED },
                         { string: Localization.GetTranslate( "grettings", "three" )},
-                        { string: Localization.GetTranslate( "grettings", "four" )},
-                        { string: Localization.GetTranslate( "grettings", "five" ), emotion: this.emotions.WORKING, postFunction: _ => { this.WebReady(); }},
-                        { string: Localization.GetTranslate( "grettings", "six" )},
-                        { string: Localization.GetTranslate( "grettings", "seven" ), emotion: this.emotions.SURPRISED },
-                        { string: Localization.GetTranslate( "grettings", "eight" )},
+                        { string: Localization.GetTranslate( "grettings", "four" ), emotion: this.emotions.WORKING, postFunction: _ => { this.WebReady(); }},
+                        { string: Localization.GetTranslate( "grettings", "five" )},
+                        { string: Localization.GetTranslate( "grettings", "six" ), emotion: this.emotions.SURPRISED },
+                        { string: Localization.GetTranslate( "grettings", "seven" )},
                     ], this.statuses.SLEEP);
                 }
                 this.sleepCycle++;

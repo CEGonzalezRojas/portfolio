@@ -23,6 +23,7 @@
     background-position: center;
     background-size: cover;
     box-shadow: var(--iframe-shadow);
+    cursor: pointer;
 }
 
 .portfolio > .projects > .project > .image::before{

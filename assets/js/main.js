@@ -45,22 +45,22 @@ new MascotController( _ => {
             <div class="portfolio">
                 <div class="title">${Localization.GetTranslate( "portfolio", "title" )}</div>
                 <div class="projects">
-                    <div class="project">
+                    <div class="project" data-url="https://jankenup.com/">
                         <div class="image" data-type="videogame" data-url="/assets/images/portfolio/jankenup.gif" data-lazy="true" data-lazy_type="background"></div>
                         <div class="title">JanKenUP!</div>
                         <div class="description">${Localization.GetTranslate( "portfolio", "janken" )}</div>
                     </div>
-                    <div class="project">
+                    <div class="project" data-url="https://cegonzalezrojas.github.io/konacode/">
                         <div class="image" data-type="website" data-url="/assets/images/portfolio/konacode.gif" data-lazy="true" data-lazy_type="background"></div>
                         <div class="title">KonamiCode</div>
                         <div class="description">${Localization.GetTranslate( "portfolio", "konacode" )}</div>
                     </div>
-                    <div class="project">
+                    <div class="project" data-url="https://playcausa.com/">
                         <div class="image" data-type="web Application" data-url="/assets/images/portfolio/causa.gif" data-lazy="true" data-lazy_type="background"></div>
                         <div class="title">Causa: Voices of the Dusk</div>
                         <div class="description">${Localization.GetTranslate( "portfolio", "causa" )}</div>
                     </div>
-                    <div class="project">
+                    <div class="project" data-url="https://nieblagames.com/">
                         <div class="image" data-type="website" data-url="/assets/images/portfolio/niebla.gif" data-lazy="true" data-lazy_type="background"></div>
                         <div class="title">Niebla Games</div>
                         <div class="description">${Localization.GetTranslate( "portfolio", "niebla" )}</div>
@@ -93,6 +93,13 @@ new MascotController( _ => {
     mainLayer.querySelectorAll("[data-email]").forEach(email => {
         email.addEventListener( "click", _ => {
             window.open( "mailto:claudioestebangonzalezrojas@gmail.com", "_blank" );
+        }); 
+    });
+
+    // Links to projects
+    mainLayer.querySelectorAll(".project").forEach(project => {
+        project.querySelector(".image").addEventListener( "click", _ => {
+            window.open( project.dataset.url, "_blank" );
         }); 
     });
 
