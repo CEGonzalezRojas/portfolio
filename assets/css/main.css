@@ -187,6 +187,10 @@ a{
     cursor: pointer;
 }
 
+kcjoystick{
+    z-index: 3;
+}
+
 /* Responsive */
 @media (max-width: 580px) {
     
