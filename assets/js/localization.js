@@ -125,15 +125,15 @@ class Localization{
 
             youtube:{
                 en:{
-                    one         : "I always had the intention of creating a YouTube channel, but I never did. Well.. I uploaded things to my personal channel but nothing special.",
+                    one         : "I always had the intention of creating a YouTube channel, but I never did. Well.. I uploaded things to my personal channel.",
                     two         : "Now I have a channel where I upload videos related to game development, but there could also be more content in the future.",
                 },
                 es:{
-                    one         : "Siempre tuve la intención de crear un canal de Youtube, pero nunca lo hice. Bueno si, subía cosas a mi canal personal pero nada del otro mundo.",
+                    one         : "Siempre tuve la intención de crear un canal de Youtube, pero nunca lo hice. Bueno si, subía cosas a mi canal personal.",
                     two         : "Ahora tengo un canal donde subo videos relacionados al desarrollo de videojuegos, pero también podría haber más contenido a futuro.",
                 },
                 "es-cl":{
-                    one         : "Siempre tuve la intención de crear un canal de Youtube, pero nunca lo hice. Bueno si, subía cosas a mi canal personal pero nada del otro mundo.",
+                    one         : "Siempre tuve la intención de crear un canal de Youtube, pero nunca lo hice. Bueno si, subía cosas a mi canal personal.",
                     two         : "Ahora tengo un canal donde subo videos relacionados al desarrollo de videojuegos, pero también podría haber más contenido a futuro.",
                 }
             },
