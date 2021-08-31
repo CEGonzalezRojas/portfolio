@@ -103,6 +103,8 @@ class Localization{
                 en:{
                     title       : "Portfolio",
                     janken      : "Game designer and programmer of a high-octane rock-paper-scissors video game.",
+                    bloks       : "Scrum master and lead programmer. Application to organize work and facilitate team communication.",
+                    teclera     : "Programmer / Designer. Real-time application to project live surveys / quizzes under the 'classroom flip' model.",
                     konacode    : "JS / CSS implementation of the classic Konami code.",
                     causa       : "Web developer of the video game Causa, Voices of the Dusk.",
                     niebla      : "Website for an indie game developer.",
@@ -110,6 +112,8 @@ class Localization{
                 es:{
                     title       : "Portafolio",
                     janken      : "Game designer y programador de un videojuego de piedra, papel y tijeras de alto octanaje.",
+                    bloks       : "Scrum master y programador lider. Aplicación para organizar el trabajo y facilitar la comunicación de equipos.",
+                    teclera     : "Programador / Diseñador. Aplicación en tiempo real para proyectar encuestas / cuestionarios en vivo bajo el modelo 'flip classroom'.",
                     konacode    : "Implementacion JS/CSS del clásico código de Konami.",
                     causa       : "Desarrollador de la web del videojuego Causa, Voices of the Dusk.",
                     niebla      : "Sitio web para una desarrolladora de videojuegos indie.",
@@ -117,6 +121,8 @@ class Localization{
                 "es-cl":{
                     title       : "Portafolio",
                     janken      : "Game designer y programador de un videojuego de cachipun de alto octanaje.",
+                    bloks       : "Scrum master y programador lider. Aplicación para organizar el trabajo y facilitar la comunicación de equipos.",
+                    teclera     : "Programador / Diseñador. Aplicación en tiempo real para proyectar encuestas / cuestionarios en vivo bajo el modelo 'flip classroom'.",
                     konacode    : "Implementacion JS/CSS del clásico código de Konami.",
                     causa       : "Desarrollador de la web del videojuego Causa, Voices of the Dusk.",
                     niebla      : "Sitio web para una desarrolladora de videojuegos indie.",
