@@ -74,6 +74,16 @@ new MascotController( _ => {
                         <div class="title">JanKenUP!</div>
                         <div class="description">${window.Localization.GetTranslate( "portfolio", "janken" )}</div>
                     </div>
+                    <div class="project" data-url="https://tres.bloks.cl/">
+                        <div class="image" data-type="web Application" data-url="${mainPath}assets/images/portfolio/bloks.gif" data-lazy="true" data-lazy_type="background"></div>
+                        <div class="title">Bloks</div>
+                        <div class="description">${window.Localization.GetTranslate( "portfolio", "bloks" )}</div>
+                    </div>
+                    <div class="project" data-url="https://teclera.com/">
+                        <div class="image" data-type="web Application" data-url="${mainPath}assets/images/portfolio/teclera.gif" data-lazy="true" data-lazy_type="background"></div>
+                        <div class="title">Teclera</div>
+                        <div class="description">${window.Localization.GetTranslate( "portfolio", "teclera" )}</div>
+                    </div>
                     <div class="project" data-url="https://cegonzalezrojas.github.io/konacode/">
                         <div class="image" data-type="website" data-url="${mainPath}assets/images/portfolio/konacode.gif" data-lazy="true" data-lazy_type="background"></div>
                         <div class="title">KonamiCode</div>
